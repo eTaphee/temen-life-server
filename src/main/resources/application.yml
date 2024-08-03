@@ -1,0 +1,40 @@
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          tesla:
+            provider: tesla
+            client-id: ${TESLA_CLIENT_ID}
+            client-secret: ${TESLA_CLIENT_SECRET}
+            authorization-grant-type: authorization_code
+            scope: open_id,vehicle_device_data,offline_access,user_data
+            client-authentication-method: client_secret_post
+            redirect-uri: "{baseUrl}/login/oauth2/code/{registrationId}"
+        provider:
+          tesla:
+            authorization-uri: https://auth.tesla.com/oauth2/v3/authorize
+            token-uri: https://auth.tesla.com/oauth2/v3/token
+            user-info-uri: https://fleet-api.prd.na.vn.cloud.tesla.com/api/1/users/me
+            user-name-attribute: response
+
+  jpa:
+    open-in-view: false
+    hibernate:
+        ddl-auto: validate
+    properties:
+        hibernate:
+            show_sql: true
+            format_sql: true
+
+  datasource:
+    url: ${DB_URL}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+    driver-class-name: org.mariadb.jdbc.Driver
+
+logging:
+  level:
+      org:
+          springframework:
+              security: DEBUG
