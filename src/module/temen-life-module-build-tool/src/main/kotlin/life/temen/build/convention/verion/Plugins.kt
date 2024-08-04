@@ -8,7 +8,7 @@ object Plugins {
     const val KOTLIN_DSL = "org.gradle.kotlin.kotlin-dsl"
 
     object Version {
-        const val KOTLIN = "1.9.24"
+        const val KOTLIN = "1.9.22"
         const val SPRING_BOOT = "3.3.2"
         const val SPRING_DEPENDENCY_MANAGEMENT = "1.1.6"
     }

@@ -1,9 +1,9 @@
-package life.temen.oauth2
+package life.temen.app.externalapi.oauth2
 
 import jakarta.servlet.http.HttpServletRequest
 import jakarta.servlet.http.HttpServletResponse
-import life.temen.entity.Member
-import life.temen.repository.MemberRepository
+import life.temen.app.externalapi.entity.Member
+import life.temen.app.externalapi.repository.MemberRepository
 import org.springframework.security.core.Authentication
 import org.springframework.security.oauth2.client.OAuth2AuthorizedClient
 import org.springframework.security.oauth2.client.OAuth2AuthorizedClientService

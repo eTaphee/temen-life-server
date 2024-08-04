@@ -1,4 +1,4 @@
-package life.temen.controller
+package life.temen.app.externalapi.controller
 
 import jakarta.servlet.http.HttpServletRequest
 import org.springframework.security.core.context.SecurityContextHolder

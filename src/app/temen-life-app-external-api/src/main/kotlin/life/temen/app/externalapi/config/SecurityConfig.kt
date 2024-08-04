@@ -1,7 +1,7 @@
-package life.temen.config
+package life.temen.app.externalapi.config
 
-import life.temen.oauth2.TeslaOAuth2SuccessHandler
-import life.temen.repository.MemberRepository
+import life.temen.app.externalapi.oauth2.TeslaOAuth2SuccessHandler
+import life.temen.app.externalapi.repository.MemberRepository
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.security.config.annotation.web.builders.HttpSecurity

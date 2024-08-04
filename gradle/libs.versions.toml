@@ -1,0 +1,29 @@
+[versions]
+jackson = "2.16.1"
+
+[libraries]
+apache-httpclient = { module = "org.apache.httpcomponents.client5:httpclient5", version = "5.3" }
+database-h2 = { module = "com.h2database:h2", version = "2.2.224" }
+database-mariadb = { module = "org.mariadb.jdbc:mariadb-java-client", version = "3.4.1" }
+jsonwebtoken-api = { module = "io.jsonwebtoken:jjwt-api", version = "0.11.5" }
+jsonwebtoken-impl = { module = "io.jsonwebtoken:jjwt-impl", version = "0.11.5" }
+jsonwebtoken-jackson = { module = "io.jsonwebtoken:jjwt-jackson", version = "0.11.5" }
+jackson-databind = { module = "com.fasterxml.jackson.core:jackson-databind", version.ref = "jackson" }
+jackson-jsr310 = { module = "com.fasterxml.jackson.datatype:jackson-datatype-jsr310", version.ref = "jackson" }
+jackson-kotlin = { module = "com.fasterxml.jackson.module:jackson-module-kotlin", version.ref = "jackson" }
+jakarta-persistence = { module = "jakarta.persistence:jakarta.persistence-api" }
+kotlin-reflect= { module = "org.jetbrains.kotlin:kotlin-reflect" }
+springboot-starter = { module = "org.springframework.boot:spring-boot-starter" }
+springboot-starter-aop = { module = "org.springframework.boot:spring-boot-starter-aop" }
+springboot-starter-jpa = { module = "org.springframework.boot:spring-boot-starter-data-jpa" }
+springboot-starter-log4j2 = { module = "org.springframework.boot:spring-boot-starter-log4j2" }
+springboot-starter-test = { module = "org.springframework.boot:spring-boot-starter-test" }
+springboot-starter-validation = { module = "org.springframework.boot:spring-boot-starter-validation" }
+springboot-starter-web = { module = "org.springframework.boot:spring-boot-starter-web" }
+springboot-starter-security = { module = "org.springframework.boot:spring-boot-starter-security" }
+spring-security-oauth2-client = { module = "org.springframework.security:spring-security-oauth2-client" }
+apache-tika-core = { module = "org.apache.tika:tika-core", version = "2.4.1" }
+
+[bundles]
+jackson = [ "jackson-databind", "jackson-jsr310", "jackson-kotlin" ]
+jsonwebtoken = [ "jsonwebtoken-impl", "jsonwebtoken-jackson", "jsonwebtoken-api" ]
