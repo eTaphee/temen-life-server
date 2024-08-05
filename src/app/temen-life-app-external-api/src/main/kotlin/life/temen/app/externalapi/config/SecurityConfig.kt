@@ -1,7 +1,7 @@
 package life.temen.app.externalapi.config
 
-import life.temen.app.externalapi.oauth2.TeslaOAuth2SuccessHandler
-import life.temen.app.externalapi.repository.MemberRepository
+import life.temen.app.externalapi.auth.TeslaOAuth2SuccessHandler
+import life.temen.domain.service.MemberService
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.security.config.annotation.web.builders.HttpSecurity
@@ -14,7 +14,7 @@ import org.springframework.security.web.SecurityFilterChain
 @EnableWebSecurity
 internal class SecurityConfig(
     private val oAuth2AuthorizedClientService: OAuth2AuthorizedClientService,
-    private val memberRepository: MemberRepository,
+    private val memberService: MemberService,
 ) {
     @Bean
     fun defaultFilterChain(http: HttpSecurity): SecurityFilterChain {
@@ -32,7 +32,7 @@ internal class SecurityConfig(
         http.sessionManagement { it.sessionCreationPolicy(STATELESS) }
 
         http.oauth2Login {
-            it.successHandler(TeslaOAuth2SuccessHandler(oAuth2AuthorizedClientService, memberRepository))
+            it.successHandler(TeslaOAuth2SuccessHandler(oAuth2AuthorizedClientService, memberService))
         }
         http.oauth2Client { }
 

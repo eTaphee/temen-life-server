@@ -1,6 +1,6 @@
-package life.temen.app.externalapi.repository
+package life.temen.domain.repository
 
-import life.temen.app.externalapi.entity.Member
+import life.temen.domain.entity.Member
 import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.stereotype.Repository
 import java.util.UUID

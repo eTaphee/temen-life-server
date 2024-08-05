@@ -8,4 +8,7 @@ plugins {
 dependencies {
     implementation(libs.spring.security.oauth2.client)
     implementation(libs.database.mariadb)
+
+    implementation(projects.src.domain.temenLifeDomain)
+    implementation(projects.src.domain.temenLifeDomainAuth)
 }

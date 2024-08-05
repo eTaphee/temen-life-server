@@ -1,4 +1,4 @@
-package life.temen.app.externalapi.entity
+package life.temen.domain.entity
 
 import jakarta.persistence.Column
 import jakarta.persistence.Entity

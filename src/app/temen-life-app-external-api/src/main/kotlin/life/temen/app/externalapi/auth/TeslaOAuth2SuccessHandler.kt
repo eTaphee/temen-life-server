@@ -1,9 +1,8 @@
-package life.temen.app.externalapi.oauth2
+package life.temen.app.externalapi.auth
 
 import jakarta.servlet.http.HttpServletRequest
 import jakarta.servlet.http.HttpServletResponse
-import life.temen.app.externalapi.entity.Member
-import life.temen.app.externalapi.repository.MemberRepository
+import life.temen.domain.service.MemberService
 import org.springframework.security.core.Authentication
 import org.springframework.security.oauth2.client.OAuth2AuthorizedClient
 import org.springframework.security.oauth2.client.OAuth2AuthorizedClientService
@@ -14,7 +13,7 @@ import java.time.ZoneId
 
 internal class TeslaOAuth2SuccessHandler(
     private val oAuth2AuthorizedClientService: OAuth2AuthorizedClientService,
-    private val memberRepository: MemberRepository,
+    private val memberService: MemberService,
 ) : SimpleUrlAuthenticationSuccessHandler() {
     companion object {
         private val ZONE_ID = ZoneId.of("Asia/Seoul")
@@ -42,19 +41,15 @@ internal class TeslaOAuth2SuccessHandler(
         val refreshToken = authorizedClient.refreshToken!!.tokenValue
         val tokenExpiry = LocalDateTime.ofInstant(authorizedClient.accessToken.expiresAt, ZONE_ID)
 
-        val member =
-            memberRepository.findOneByEmail(authentication.name)
-                ?: Member(provider, email, fullName, profileImageUrl, accessToken, refreshToken, tokenExpiry)
-
-        member.also {
-            it.fullName = fullName
-            it.profileImageUrl = profileImageUrl
-            it.accessToken = accessToken
-            it.refreshToken = refreshToken
-            it.tokenExpiry = tokenExpiry
-        }
-
-        memberRepository.save(member)
+        memberService?.registerOrUpdateMember(
+            provider,
+            email,
+            fullName,
+            profileImageUrl,
+            accessToken,
+            refreshToken,
+            tokenExpiry,
+        )
 
         redirectStrategy.sendRedirect(request, response, "https://naver.com")
     }

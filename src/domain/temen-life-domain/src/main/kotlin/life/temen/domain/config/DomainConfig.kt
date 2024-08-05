@@ -1,8 +1,8 @@
-package life.temen.app.externalapi.config
+package life.temen.domain.config
 
 import org.springframework.context.annotation.Configuration
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing
 
 @Configuration
 @EnableJpaAuditing
-class JpaConfig
+class DomainConfig
